@@ -6,7 +6,8 @@
 % http://tex.stackexchange.com/a/194961/13600
 \usepackage{graphicx,stringenc}
 \usepackage{xparse,l3regex}
-\usepackage[utf8x]{inputenc}
+% Removed for further generalization with other packages
+% \usepackage[utf8x]{inputenc}
 \usepackage[export]{adjustbox}
 \usepackage{amsmath}
 
@@ -33,7 +34,8 @@
   }%
  }
 
-\bool_if:nTF { \xetex_if_engine_p: || \luatex_if_engine_p: }
+% Update flags (https://github.com/alecjacobson/coloremoji.sty/pull/21)
+\bool_if:nTF { \sys_if_engine_xetex_p: || \sys_if_engine_luatex_p: }
   {
    \cs_set_eq:NN \coloremoji \coloremoji_unicode:n
   }
